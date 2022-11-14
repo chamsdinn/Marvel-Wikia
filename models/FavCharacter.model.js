@@ -1,5 +1,4 @@
 const { Schema, model } = require("mongoose");
-const User = require("./User.model");
 
 const favCharacterSchema = new Schema({
     characterId: {
@@ -8,7 +7,7 @@ const favCharacterSchema = new Schema({
     },
     userId: {
         type: Schema.Types.ObjectId,
-        ref: User,
+        ref: "User",
     }
     
 },
