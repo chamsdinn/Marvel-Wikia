@@ -1,0 +1,13 @@
+<h2>SuperHero search results:</h2>
+
+
+<ul>
+    {{#each searchedHero}}
+    <li>
+        Name: {{this.name}}
+        Description: {{this.description}}
+        <img src="{{this.thumbnail.path}}.{{this.thumbnail.extension}}" alt="{{this.name}}">
+        
+    </li>
+    {{/each}}
+</ul>
