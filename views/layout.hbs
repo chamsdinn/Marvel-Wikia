@@ -9,9 +9,31 @@
   </head>
 
   <body>
+<nav>
+    <ul>
+        {{#if isLoggedIn}}
+        <li><a href="/">Home Page</a></li>
+        <li><a href="/autho/favorites">Favorites SuperHeroes</a></li>
+        <li><a href="/autho/logout">Logout</a></li>
+        {{else}}
+        <li><a href="/autho/signup">Sign up</a></li>
+        <li><a href="/autho/login">Login</a></li>
+        {{/if}}
+    </ul>
+
+    <form action="" method="get">
+        <label for="search">Search:</label>
+        <input type="search"
+            name="superheroes"
+            placeholder="your favorite SuperHero!"
+            id="search"/>
+        <button>Search</button>
+    </form>
+</nav>
+
 
     {{{body}}}
-
+    <footer><p>Data provided by Marvel. © 2022 Marvel</p></footer>
     <script src="/js/script.js"></script>
   </body>
 
