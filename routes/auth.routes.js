@@ -12,19 +12,7 @@ router.get("/login", (req,res,next)=>{
   res.render("auth/login")
 })
 
-router.get("/main", (req,res,next)=>{
-  res.render("main")
-})
-router.get("/favorites", async (req,res,next)=>{
-  try {
-    const allFavCharacters = await Character.find();
-    console.log(allFavCharacters)
-    res.render("/favorites", {allFavCharacters});
-  } catch (error) {
-    console.log(error)
-  }
-  res.render("favorites")
-})
+
 
 router.post("/signup", async(req,res,next)=>{
   const {username, password, email} = req.body

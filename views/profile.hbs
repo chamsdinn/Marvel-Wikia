@@ -1,5 +1,4 @@
 <h1>Profile of {{currentUser.username}}</h1>
-
 <p>
 	username:
 	{{currentUser.username}}
@@ -10,4 +9,6 @@
 	{{currentUser.email}}
 </p>
 
+<p>{{currentUser.bio}}</p>
+<a href="/profile/{{currentUser._id}}/edit"><button id="edit-btn" type="submit">Edit your profile</button></a>
 <a href="/profile">Reload</a>
