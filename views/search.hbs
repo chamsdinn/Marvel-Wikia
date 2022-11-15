@@ -5,15 +5,15 @@
     {{#each searchedHero}}
     <li id="superhero">
         <img src="{{this.thumbnail.path}}.{{this.thumbnail.extension}}" alt="{{this.name}}">
-        <button id="add-fav-btn">Add to your Favorites!</button>
+        <form action="/profile/favorites/{{this._id}}/add" method="post"><button type="submit" id="add-fav-btn">Add to your Favorites!</button></form>
+        
         Name: {{this.name}}
         Description: {{this.description}}
-        Comics:
+        Comics related:
         
         {{#each this.comics.items}}
         
             <li>{{this.name}}</li>
-        
         
         {{/each}}
     </li>
