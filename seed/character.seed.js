@@ -40,13 +40,13 @@ async function seedCharacters() {
       data = response.data;
 
       seed = await Character.create(data.results);
-      console.log(seed);
+      // console.log(seed);
       offset += 100;
     }
 
     mongoose.disconnect();
   } catch (error) {
-    console.error(error);
+    next(error);
   }
 }
 

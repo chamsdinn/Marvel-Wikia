@@ -8,13 +8,28 @@ const FavCharacter = require('../models/FavCharacter.model');
 const router = express.Router();
 const salt = 11
 /* GET home page */
-router.get("/", (req, res, next) => {
-  res.render("index");
+router.get("/", async (req, res, next) => {
+  try {
+    const allCharacters = await Character.find();
+    const randomCharacters=[];
+
+    for (let index = 0; index < 5; index++) {
+      const randomCharacter = allCharacters.splice(Math.floor(Math.random()*allCharacters.length), 1)[0]
+      randomCharacters.push(randomCharacter)
+    }
+
+    // console.log(randomCharacters)
+    res.render("index", {randomCharacters});
+  } catch (error) {
+    next(error)
+  }
+  
 });
 
 router.get("/search", async(req, res, next)=>{
   try {
-    const {superheroes} = req.query
+    const {superheroes} = req.query;
+    req.session.search = superheroes;
     
     const searchQ = new RegExp(superheroes, "gi");
     //console.log(superheroes)
@@ -24,14 +39,14 @@ router.get("/search", async(req, res, next)=>{
     }
     res.render("search", {searchedHero})
   } catch (error) {
-    console.log(error)
+    next(error)
   }
 })
 
 router.use(isLoggedIn);
 
 router.get("/profile", isLoggedIn, (req, res, next) => {
-	console.log(req.session.currentUser)
+	// console.log(req.session.currentUser)
 	res.render("profile")
 })
 
@@ -80,7 +95,7 @@ router.get("/profile/favorites", async (req,res,next)=>{
     //console.log(allFavCharacters)
     res.render("favorites", {allFavCharacters});
   } catch (error) {
-    console.log(error)
+    next(error)
   }
 })
 
