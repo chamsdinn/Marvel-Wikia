@@ -1,3 +1,14 @@
 <h1>{{appTitle}} 🕸️</h1>
 <p>Welcome To Marvel Wikia!</p>
 
+<ul id="randomheroes">
+    {{#each randomCharacters}}
+    <li id="superhero">
+        <img src="{{this.thumbnail.path}}.{{this.thumbnail.extension}}" alt="{{this.name}}">
+        
+        Name: {{this.name}}
+        Description: {{this.description}}
+        
+    </li>
+    {{/each}}
+</ul>
