@@ -32,7 +32,7 @@ async function seedCharacters() {
     offset += 100;
 
     let seed = await Character.create(data.results);
-    console.log(seed);
+    //console.log(seed);
     for (let i = total; i > 0; i -= 100) {
       const response = await (
         await fetch(`${fetchUrl}&limit=100&offset=${offset}`)

@@ -5,7 +5,7 @@
     {{#with this.character}}
     <li id="superhero">
 
-        <img src="{{thumbnail.path}}.{{thumbnail.extension}}" alt="{{name}}">
+        <img class="character-img" src="{{thumbnail.path}}.{{thumbnail.extension}}" alt="{{name}}">
         <form action="/profile/favorites/{{this._id}}/delete" method="post"><button type="submit" id="del-fav-btn">Delete from Favorites!</button></form>
         Name: {{name}}
         Description: {{description}}
