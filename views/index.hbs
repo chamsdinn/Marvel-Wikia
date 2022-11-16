@@ -1,14 +1,25 @@
 <h1>{{appTitle}} 🕸️</h1>
-<p>Welcome To Marvel Wikia!</p>
 
-<ul id="randomheroes">
+<div class="character-container">
+
+  <ul id="randomheroes">
     {{#each randomCharacters}}
-    <li id="superhero">
-        <img src="{{this.thumbnail.path}}.{{this.thumbnail.extension}}" alt="{{this.name}}">
-        
-        Name: {{this.name}}
-        Description: {{this.description}}
-        
-    </li>
+      <li id="superhero">
+        <img
+          class="character-img"
+          src="{{this.thumbnail.path}}.{{this.thumbnail.extension}}"
+          alt="{{this.name}}"
+        />
+        <form action="/profile/favorites/{{this._id}}/add" method="post"><button
+            type="submit"
+            id="add-fav-btn"
+          >Add to your Favorites!</button></form>
+
+        Name:
+        {{this.name}}
+
+      </li>
     {{/each}}
-</ul>
+  </ul>
+
+</div>

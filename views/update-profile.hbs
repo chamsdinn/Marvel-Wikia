@@ -2,22 +2,34 @@
   <h2>Edit your profile</h2>
   <form action="/profile/{{currentUser._id}}/edit" method="POST">
 
-    <label> Username
-      <input disabled type="text" name="username" placeholder="Your username" value ={{currentUser.username}} />
+    <label>
+      Username
+      <input
+        disabled
+        type="text"
+        name="username"
+        placeholder="Your username"
+        value={{currentUser.username}}
+      />
     </label>
 
-    {{!-- <label> Email
+    {{! <label> Email
       <input type="email" name="email" placeholder="Your email" />
-    </label> --}}
+    </label> }}
 
-    <label> Password
+    <label>
+      Password
       <input type="password" name="password" placeholder="Your password" />
     </label>
-    <label> Password
-      <input type="password" name="newpassword" placeholder="Your new password"/>
+    <label>
+      Password
+      <input
+        type="password"
+        name="newpassword"
+        placeholder="Your new password"
+      />
     </label>
     <button type="submit">Submit changes</button>
-
 
     {{#if errorMessage}}
       <p class="error">{{errorMessage}}</p>

@@ -9,33 +9,37 @@
   </head>
 
   <body>
-<nav>
-    <ul>
-      <li><a href="/">Home Page</a></li>
+    <nav id="navbar">
+      <ul>
+        <li><a href="/">Home Page</a></li>
         {{#if isLoggedIn}}
-        
-        <li><a href="/profile/favorites">Favorites SuperHeroes</a></li>
-        <li><a href="/auth/logout">Logout</a></li>
+
+          <li><a href="/profile/favorites">Favorites SuperHeroes</a></li>
+          <li><a href="/auth/logout">Logout</a></li>
         {{else}}
-        <li><a href="/auth/signup">Sign up</a></li>
-        <li><a href="/auth/login">Login</a></li>
+          <li><a href="/auth/signup">Sign up</a></li>
+          <li><a href="/auth/login">Login</a></li>
         {{/if}}
-    </ul>
+      </ul>
 
-    <form action="/search" method="get">
+      <form action="/search" method="get">
         <label for="search">Search:</label>
-        <input type="search"
-            name="superheroes"
-            placeholder="your favorite SuperHero!"
-            id="search"/>
+        <input
+          type="search"
+          name="superheroes"
+          placeholder="your favorite SuperHero!"
+          id="search"
+        />
         <button id="searchBtn">Search</button>
-    </form>
-</nav>
+      </form>
+    </nav>
 
+    <div class="container">
 
-    {{{body}}}
-    <footer><p>Data provided by Marvel. © 2022 Marvel</p></footer>
-    <script src="/js/script.js"></script>
+      {{{body}}}
+      <footer><p>Data provided by Marvel. © 2022 Marvel</p></footer>
+      <script src="/js/script.js"></script>
+    </div>
   </body>
 
 </html>
