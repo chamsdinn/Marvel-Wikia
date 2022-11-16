@@ -1,11 +1,16 @@
 <div id="login-form">
-  <h2>Log In</h2>
+  <h2>LOGIN</h2>
   <form action="/auth/login" method="POST">
     <p>Sign up or log in if you want to add a character in your favorites!</p>
 
     <label>
       Username
-      <input type="text" name="username" placeholder="Your username" />
+      <input
+        class="input-height"
+        type="text"
+        name="username"
+        placeholder="Your username"
+      />
     </label>
 
     {{! <label> Email
@@ -14,7 +19,12 @@
 
     <label>
       Password
-      <input type="password" name="password" placeholder="Your password" />
+      <input
+        class="input-height"
+        type="password"
+        name="password"
+        placeholder="Your password"
+      />
     </label>
 
     <button type="submit">Log In</button>
