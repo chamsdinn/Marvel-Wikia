@@ -10,34 +10,39 @@
 
   <body>
     <nav id="navbar">
-      <ul>
-        <li><a href="/">Home Page</a></li>
+      <ul id="nav-list">
+        <li><a href="/">HOME PAGE</a></li>
         {{#if isLoggedIn}}
-
-          <li><a href="/profile/favorites">Favorites SuperHeroes</a></li>
-          <li><a href="/auth/logout">Logout</a></li>
+          <li><a href="/profile">MY PROFILE</a></li>
+          <li><a href="/profile/favorites">FAVORITE SUPERHEROES</a></li>
+          <li><a href="/auth/logout">LOGOUT</a></li>
         {{else}}
-          <li><a href="/auth/signup">Sign up</a></li>
-          <li><a href="/auth/login">Login</a></li>
+          <li><a href="/auth/signup">SIGN UP</a></li>
+          <li><a href="/auth/login">LOGIN</a></li>
         {{/if}}
       </ul>
 
-      <form action="/search" method="get">
-        <label for="search">Search:</label>
+      <form id="nav-search" action="/search" method="get">
+        <label for="search"><img
+            src="/images/icon-search.png"
+            alt="magnifying glass"
+          /></label>
         <input
+          class="input-height"
           type="search"
           name="superheroes"
-          placeholder="your favorite SuperHero!"
+          placeholder="Which SuperHero?"
           id="search"
         />
-        <button id="searchBtn">Search</button>
+        <button id="searchBtn">SEARCH</button>
       </form>
+
     </nav>
 
     <div class="container">
 
       {{{body}}}
-      <footer><p>Data provided by Marvel. © 2022 Marvel</p></footer>
+      <footer><p id="credit-marvel">Data provided by Marvel. © 2022 Marvel</p></footer>
       <script src="/js/script.js"></script>
     </div>
   </body>

@@ -1,4 +1,4 @@
-<h2>SuperHero search results:</h2>
+<h2>SUPERHERO SEARCH RESULTS:</h2>
 
 <ul id="listheroes">
   {{#each searchedHero}}
@@ -20,9 +20,9 @@
       Comics related:
 
       {{#each this.comics.items}}
-
-        <li>{{this.name}}</li>
-
+        <ul>
+          <li>{{this.name}}</li>
+        </ul>
       {{/each}}
     </li>
   {{/each}}

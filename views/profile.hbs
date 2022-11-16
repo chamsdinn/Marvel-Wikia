@@ -1,14 +1,16 @@
-<h1>Profile of {{currentUser.username}}</h1>
+<h2>PROFILE OF {{currentUser.username}}</h2>
 <p>
-	username:
-	{{currentUser.username}}
+  username:
+  {{currentUser.username}}
 </p>
 
 <p>
-	email:
-	{{currentUser.email}}
+  email:
+  {{currentUser.email}}
 </p>
 
 <p>{{currentUser.bio}}</p>
-<a href="/profile/{{currentUser._id}}/edit"><button id="edit-btn" type="submit">Edit your profile</button></a>
-<a href="/profile">Reload</a>
+<a href="/profile/{{currentUser._id}}/edit"><button
+    id="edit-btn"
+    type="submit"
+  >Edit your profile</button></a>
