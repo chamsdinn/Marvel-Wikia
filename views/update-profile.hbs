@@ -1,40 +1,42 @@
-<div id="form">
-  <h2>EDIT YOUR PROFILE</h2>
+<h2>EDIT YOUR PROFILE</h2>
+<div id="edit-profile-form">
   <form action="/profile/{{currentUser._id}}/edit" method="POST">
+    <p>
+      <label>
+        Username:
+        <input
+          disabled
+          type="text"
+          name="username"
+          placeholder="Your username"
+          value={{currentUser.username}}
+        />
+      </label>
 
-    <label>
-      Username
-      <input
-        disabled
-        type="text"
-        name="username"
-        placeholder="Your username"
-        value={{currentUser.username}}
-      />
-    </label>
-
-    {{! <label> Email
+      {{! <label> Email
       <input type="email" name="email" placeholder="Your email" />
     </label> }}
 
-    <label>
-      Password
-      <input type="password" name="password" placeholder="Your password" />
-    </label>
-    <label>
-      Password
-      <input
-        type="password"
-        name="newpassword"
-        placeholder="Your new password"
-      />
-    </label>
-    <label>
-      <input type="file" name="picture" />
-    </label>
-    
-    <button type="submit">Submit changes</button>
+      <label>
+        Old Password:
+        <input type="password" name="password" placeholder="Your password" />
+      </label>
+      <label>
+        New Password:
+        <input
+          type="password"
+          name="newpassword"
+          placeholder="Your new password"
+        />
+      </label>
+    </p>
+    <p>
+      <label>
+        <input type="file" name="picture" />
+      </label>
 
+      <button class="form-btn" type="submit">Submit changes</button>
+    </p>
     {{#if errorMessage}}
       <p class="error">{{errorMessage}}</p>
     {{/if}}

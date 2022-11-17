@@ -1,25 +1,17 @@
 <h1>✪ {{appTitle}}🕸️</h1>
 
-<div class="character-container">
+<ul class="listheroes">
+  {{#each randomCharacters}}
+    <li class="superhero">
+      <h3>{{this.name}}</h3>
+      <img
+        class="character-img"
+        src="{{this.thumbnail.path}}.{{this.thumbnail.extension}}"
+        alt="{{this.name}}"
+      />
+      <form action="/profile/favorites/{{this._id}}/add" method="post">
+        <button type="submit" class="add-fav-btn">Add to your Favorites!</button></form>
 
-  <ul id="randomheroes">
-    {{#each randomCharacters}}
-      <li id="superhero">
-        <img
-          class="character-img"
-          src="{{this.thumbnail.path}}.{{this.thumbnail.extension}}"
-          alt="{{this.name}}"
-        />
-        <form action="/profile/favorites/{{this._id}}/add" method="post"><button
-            type="submit"
-            id="add-fav-btn"
-          >Add to your Favorites!</button></form>
-
-        Name:
-        {{this.name}}
-
-      </li>
-    {{/each}}
-  </ul>
-
-</div>
+    </li>
+  {{/each}}
+</ul>

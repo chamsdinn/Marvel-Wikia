@@ -1,23 +1,19 @@
 <h2>SUPERHERO SEARCH RESULTS:</h2>
 
-<ul id="listheroes">
+<ul class="listheroes">
   {{#each searchedHero}}
-    <li id="superhero">
+    <li class="superhero">
+      <h3>{{this.name}}</h3>
       <img
         class="character-img"
         src="{{this.thumbnail.path}}.{{this.thumbnail.extension}}"
         alt="{{this.name}}"
       />
-      <form action="/profile/favorites/{{this._id}}/add" method="post"><button
-          type="submit"
-          id="add-fav-btn"
-        >Add to your Favorites!</button></form>
-
-      Name:
-      {{this.name}}
-      Description:
+      <form action="/profile/favorites/{{this._id}}/add" method="post">
+        <button type="submit" class="add-fav-btn">Add to your Favorites!</button></form>
+      <p class="red-entry">Description:</p>
       {{this.description}}
-      Comics related:
+      <p class="red-entry">Comics related:</p>
 
       {{#each this.comics.items}}
         <ul>
