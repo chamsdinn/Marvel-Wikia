@@ -1,6 +1,6 @@
 <h2>PROFILE OF {{currentUser.username}}</h2>
 <div id="profile-page">
-  <img src={{currentUser.image}} alt={{currentUser.username}} />
+  <img id="user-img" src={{currentUser.image}} alt={{currentUser.username}} />
   <p>
     Username:
     {{currentUser.username}}
@@ -11,7 +11,6 @@
     {{currentUser.email}}
   </p>
 
-  <p>{{currentUser.bio}}</p>
   <a href="/profile/{{currentUser._id}}/edit">
     <button class="form-btn" type="submit">EDIT YOUR PROFILE</button></a>
 </div>
