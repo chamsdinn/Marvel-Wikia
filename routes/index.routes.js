@@ -1,6 +1,6 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
-const { response } = require("../app");
+const uploader = require("./../config/cloudinary");
 const isLoggedIn = require("../middleware/isLoggedIn");
 const Character = require("../models/Character.model");
 const User = require("../models/User.model");
@@ -52,10 +52,15 @@ router.get("/profile", isLoggedIn, (req, res, next) => {
   res.render("profile");
 });
 
-router.post("/profile/:id/edit", async (req, res, next) => {
+router.post("/profile/:id/edit", uploader.single("picture"), async (req, res, next) => {
   try {
-    const { password, newpassword } = req.body;
-
+    const { password, newpassword,image} = req.body;
+    if(password === newpassword){
+      return res.render("update-profile", {
+        currentUser: req.session.currentUser,
+        errorMessage: "it's the same password",
+      });
+    }
     const samePassword = await bcrypt.compare(
       password,
       req.session.currentUser.password
@@ -72,11 +77,13 @@ router.post("/profile/:id/edit", async (req, res, next) => {
 
     const updateProfile = await User.findByIdAndUpdate(
       req.params.id,
-      { password: hashedPassword },
+      { password: hashedPassword, image: req.file?.path },
       {
         new: true,
       }
     );
+      req.session.currentUser = updateProfile;
+
     res.redirect("/profile");
   } catch (error) {
     next(error);
