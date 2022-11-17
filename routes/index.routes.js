@@ -47,7 +47,7 @@ router.get("/search", async (req, res, next) => {
 
 router.use(isLoggedIn);
 
-router.get("/profile", isLoggedIn, (req, res, next) => {
+router.get("/profile", (req, res, next) => {
   // console.log(req.session.currentUser)
   res.render("profile");
 });

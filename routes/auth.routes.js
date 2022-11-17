@@ -3,6 +3,7 @@ const User = require("./../models/User.model");
 const bcrypt = require("bcryptjs");
 const uploader = require("./../config/cloudinary");
 const Character = require("../models/Character.model");
+const FavCharacter = require("../models/FavCharacter.model");
 const salt = 11;
 
 router.get("/signup", (req, res, next) => {
@@ -73,6 +74,18 @@ router.post("/login", async (req, res, next) => {
     }
 
     req.session.currentUser = foundUser;
+
+    if (req.session.charToAdd) {
+      const q = {
+        character: req.session.charToAdd,
+        user: req.session.currentUser._id,
+      };
+      await FavCharacter.findOneAndUpdate(q, q, { upsert: true });
+
+      delete req.session.charToAdd
+      res.redirect(`/profile/favorites`);
+      return;
+    }
 
     if (req.session.search) {
       res.redirect(`/search?superheroes=${req.session.search}`);
