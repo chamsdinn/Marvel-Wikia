@@ -1,6 +1,6 @@
 <div id="form">
   <h2>EDIT YOUR PROFILE</h2>
-  <form action="/profile/{{currentUser._id}}/edit" method="POST">
+  <form action="/profile/{{currentUser._id}}/edit" method="POST" enctype="multipart/form-data">
 
     <label>
       Username
@@ -29,9 +29,8 @@
         placeholder="Your new password"
       />
     </label>
-    <label>
-      <input type="file" name="picture" />
-    </label>
+    <label for="picture">Picture</label>
+    <input class="input-height" type="file" name="picture" />
     
     <button type="submit">Submit changes</button>
 
