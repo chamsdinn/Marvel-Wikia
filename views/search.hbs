@@ -1,25 +1,28 @@
 <h2>SUPERHERO SEARCH RESULTS:</h2>
+{{#if searchedHero}}
+  <ul class="listheroes">
+    {{#each searchedHero}}
+      <li class="superhero">
+        <h3>{{this.name}}</h3>
+        <img
+          class="character-img"
+          src="{{this.thumbnail.path}}.{{this.thumbnail.extension}}"
+          alt="{{this.name}}"
+        />
+        <form action="/profile/favorites/{{this._id}}/add" method="post">
+          <button type="submit" class="add-fav-btn">Add to your Favorites!</button></form>
+        <p class="red-entry">Description:</p>
+        {{this.description}}
+        <p class="red-entry">Comics related:</p>
 
-<ul class="listheroes">
-  {{#each searchedHero}}
-    <li class="superhero">
-      <h3>{{this.name}}</h3>
-      <img
-        class="character-img"
-        src="{{this.thumbnail.path}}.{{this.thumbnail.extension}}"
-        alt="{{this.name}}"
-      />
-      <form action="/profile/favorites/{{this._id}}/add" method="post">
-        <button type="submit" class="add-fav-btn">Add to your Favorites!</button></form>
-      <p class="red-entry">Description:</p>
-      {{this.description}}
-      <p class="red-entry">Comics related:</p>
-
-      {{#each this.comics.items}}
-        <ul>
-          <li>{{this.name}}</li>
-        </ul>
-      {{/each}}
-    </li>
-  {{/each}}
-</ul>
+        {{#each this.comics.items}}
+          <ul>
+            <li>{{this.name}}</li>
+          </ul>
+        {{/each}}
+      </li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p class="error-message">There is no SuperHero. Try again!</p>
+{{/if}}
