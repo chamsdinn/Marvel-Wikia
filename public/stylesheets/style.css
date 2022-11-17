@@ -23,7 +23,7 @@ html {
 
 body {
   color: #fefefe;
-  font-size: 1.1rem;
+  font-size: 1rem;
   letter-spacing: 1px;
   background-color: #151515;
   position: relative;
@@ -78,9 +78,14 @@ h1 {
   margin-bottom: 1rem;
 }
 h2 {
+  text-align: center;
   font-size: 2rem;
   letter-spacing: 2px;
   margin: 2rem 0;
+}
+
+h3 {
+  font-size: 1.2rem;
 }
 
 ul {
@@ -91,24 +96,65 @@ h1 {
   color: 15px;
 }
 .character-img {
-  height: 250px;
+  width: 300px;
+  border-radius: 10px;
 }
 
-#randomheroes {
+.character-img:hover {
+  transform: scale(1.1);
+  transition: all ease 500ms;
+}
+
+.listheroes {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   padding-bottom: 2rem;
 }
 
+.superhero {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  flex-basis: 300px;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
 .input-height {
   padding: 0.4rem;
 }
 
-#searchBtn {
+#search-btn {
   background-color: #151515;
   color: #fefefe;
   font-weight: bold;
   padding: 0.4rem;
   border-radius: 5px;
+}
+
+.add-fav-btn,
+#delete-fav-btn,
+.form-btn {
+  background-color: #ec1d24;
+  color: #fefefe;
+  font-weight: bold;
+  padding: 0.4rem;
+  border-radius: 5px;
+}
+
+.red-entry {
+  color: red;
+  font-weight: bold;
+}
+
+.error-message {
+  font-size: 1.5rem;
+}
+#signup-form,
+#login-form,
+#profile-page,
+#edit-profile-form {
+  text-align: center;
+  line-height: 4;
 }

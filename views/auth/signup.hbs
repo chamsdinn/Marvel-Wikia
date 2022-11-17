@@ -1,36 +1,39 @@
 <h2>SIGN UP</h2>
-<form action="/auth/signup" method="POST" enctype="multipart/form-data">
+<div id="signup-form">
+  <form action="/auth/signup" method="POST" enctype="multipart/form-data">
+    <p>
+      <label> Username:</label>
+      <input
+        class="input-height"
+        type="text"
+        name="username"
+        placeholder="Your username"
+      />
 
-  <label> Username</label>
-  <input
-    class="input-height"
-    type="text"
-    name="username"
-    placeholder="Your username"
-  />
+      <label> Email:</label>
+      <input
+        class="input-height"
+        type="email"
+        name="email"
+        placeholder="Your email"
+      />
 
-  <label> Email</label>
-  <input
-    class="input-height"
-    type="email"
-    name="email"
-    placeholder="Your email"
-  />
+      <label> Password:</label>
+      <input
+        class="input-height"
+        type="password"
+        name="password"
+        placeholder="Your password"
+      />
+    </p>
+    <p>
+      <label for="picture">Picture:</label>
+      <input class="input-height" type="file" name="picture" />
 
-  <label> Password</label>
-  <input
-    class="input-height"
-    type="password"
-    name="password"
-    placeholder="Your password"
-  />
-
-  <label for="picture">Picture</label>
-  <input class="input-height" type="file" name="picture" />
-
-  <button type="submit">SIGN UP</button>
-
-  {{#if errorMessage}}
-    <p class="error">{{errorMessage}}</p>
-  {{/if}}
-</form>
+      <button class="form-btn" type="submit">SIGN UP</button>
+    </p>
+    {{#if errorMessage}}
+      <p class="error">{{errorMessage}}</p>
+    {{/if}}
+  </form>
+</div>

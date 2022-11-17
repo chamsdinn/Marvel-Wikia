@@ -1,23 +1,29 @@
 <h2>MY FAVORITES</h2>
 
-<ul id="listheroes">
-    {{#each allFavCharacters}}
+<ul class="listheroes">
+  {{#each allFavCharacters}}
     {{#with this.character}}
-    <li id="superhero">
+      <li class="superhero">
+        <h3>{{name}}</h3>
+        <img
+          class="character-img"
+          src="{{thumbnail.path}}.{{thumbnail.extension}}"
+          alt="{{name}}"
+        />
+        <form action="/profile/favorites/{{this._id}}/delete" method="post">
+          <button id="delete-fav-btn" type="submit">Delete from Favorites!</button></form>
 
-        <img class="character-img" src="{{thumbnail.path}}.{{thumbnail.extension}}" alt="{{name}}">
-        <form action="/profile/favorites/{{this._id}}/delete" method="post"><button type="submit" id="del-fav-btn">Delete from Favorites!</button></form>
-        Name: {{name}}
-        Description: {{description}}
-        Comics related:
+        <p class="red-entry">Description:</p>
+        {{description}}
+        <p class="red-entry">Comics related:</p>
 
         {{#each comics.items}}
-
-    <li>{{this.name}}</li>
-
-    {{/each}}
-    </li>
+          <ul>
+            <li>{{this.name}}</li>
+          </ul>
+        {{/each}}
+      </li>
     {{/with}}
-    {{/each}}
-    </form>
+  {{/each}}
+
 </ul>

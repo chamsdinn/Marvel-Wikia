@@ -1,17 +1,17 @@
 <h2>PROFILE OF {{currentUser.username}}</h2>
-<img src={{currentUser.image}} alt={{currentUser.username}}>
-<p>
-  username:
-  {{currentUser.username}}
-</p>
+<div id="profile-page">
+  <img src={{currentUser.image}} alt={{currentUser.username}} />
+  <p>
+    Username:
+    {{currentUser.username}}
+  </p>
 
-<p>
-  email:
-  {{currentUser.email}}
-</p>
+  <p>
+    Email:
+    {{currentUser.email}}
+  </p>
 
-<p>{{currentUser.bio}}</p>
-<a href="/profile/{{currentUser._id}}/edit"><button
-    id="edit-btn"
-    type="submit"
-  >Edit your profile</button></a>
+  <p>{{currentUser.bio}}</p>
+  <a href="/profile/{{currentUser._id}}/edit">
+    <button class="form-btn" type="submit">EDIT YOUR PROFILE</button></a>
+</div>
