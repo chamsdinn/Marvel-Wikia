@@ -18,6 +18,7 @@ https://marvel-wikia.onrender.com/
 - 1 route to delete a character from the favorites.
 - Use of Cloudinary to store the user's profile pictures.
 - Use of bcrypt to hash and protect users passwords.
+- Use of Populate method to fetch and display the characters informations on the user's favorites page.
 
 # Possible improvements
 
