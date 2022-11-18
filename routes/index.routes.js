@@ -52,43 +52,50 @@ router.get("/profile", (req, res, next) => {
   res.render("profile");
 });
 
-router.post("/profile/:id/edit", uploader.single("picture"), async (req, res, next) => {
-  try {
-    const { password, newpassword,image} = req.body;
-    if(password === newpassword){
-      return res.render("update-profile", {
-        currentUser: req.session.currentUser,
-        errorMessage: "it's the same password",
-      });
-    }
-    const samePassword = await bcrypt.compare(
-      password,
-      req.session.currentUser.password
-    );
-    if (!samePassword) {
-      return res.render("update-profile", {
-        currentUser: req.session.currentUser,
-        errorMessage: "Wrong password",
-      });
-    }
+router.post(
+  "/profile/:id/edit",
+  uploader.single("picture"),
+  async (req, res, next) => {
+    try {
+      const { password, newpassword } = req.body;
+      let hashedPassword;
+      if (newpassword) {
+        if (password === newpassword) {
+          return res.render("update-profile", {
+            currentUser: req.session.currentUser,
+            errorMessage: "it's the same password",
+          });
+        }
+        const samePassword = await bcrypt.compare(
+          password,
+          req.session.currentUser.password
+        );
+        if (!samePassword) {
+          return res.render("update-profile", {
+            currentUser: req.session.currentUser,
+            errorMessage: "Wrong password",
+          });
+        }
 
-    const generatedSalt = await bcrypt.genSalt(salt);
-    const hashedPassword = await bcrypt.hash(newpassword, generatedSalt);
-
-    const updateProfile = await User.findByIdAndUpdate(
-      req.params.id,
-      { password: hashedPassword, image: req.file?.path },
-      {
-        new: true,
+        const generatedSalt = await bcrypt.genSalt(salt);
+        hashedPassword = await bcrypt.hash(newpassword, generatedSalt);
       }
-    );
+
+      const updateProfile = await User.findByIdAndUpdate(
+        req.params.id,
+        { password: hashedPassword, image: req.file?.path },
+        {
+          new: true,
+        }
+      );
       req.session.currentUser = updateProfile;
 
-    res.redirect("/profile");
-  } catch (error) {
-    next(error);
+      res.redirect("/profile");
+    } catch (error) {
+      next(error);
+    }
   }
-});
+);
 
 router.get("/profile/:id/edit", async (req, res, next) => {
   try {
