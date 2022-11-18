@@ -46,6 +46,7 @@ body {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  z-index: 1;
 }
 
 #nav-list {
@@ -160,14 +161,19 @@ h1 {
   font-weight: bold;
 }
 
-.error-message {
-  font-size: 1.5rem;
-  text-align: center;
-}
 #signup-form,
 #login-form,
 #profile-page,
 #edit-profile-form {
   text-align: center;
   line-height: 4;
+}
+.error-message {
+  font-size: 1.5rem;
+  text-align: center;
+}
+.not-found {
+  margin: 2rem 0;
+  display: flex;
+  justify-content: center;
 }
